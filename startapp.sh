@@ -1,6 +1,4 @@
-#!/bin/bash
-
-. /files/FileBot.conf
+#!/usr/bin/env bash
 
 function ts {
   echo [`date '+%b %d %X'`]
@@ -10,5 +8,5 @@ function ts {
 
 export DISPLAY=:1
 
-echo "$(ts) Running FileBot GUI"
-/files/runas.sh $USER_ID $GROUP_ID $UMASK filebot
+echo "$(ts) Running QDirStat GUI"
+/runas.sh $USER_ID $GROUP_ID $UMASK QDirStat 
