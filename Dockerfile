@@ -19,7 +19,7 @@ echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
 echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache && \
 
 # Add QDirStat Repository
-add-apt-repository ppa:nathan-renniewaldock/qdirstat && \
+add-apt-repository -y ppa:nathan-renniewaldock/qdirstat && \
 
 # Update apt and install dependencies.
 apt-get update && \
