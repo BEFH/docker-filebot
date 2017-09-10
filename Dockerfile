@@ -16,16 +16,16 @@ RUN \
 
 # Speed up APT
 echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
-echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache && \
+echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache
 
 # Add QDirStat Repository
-add-apt-repository -y ppa:nathan-renniewaldock/qdirstat && \
+RUN add-apt-repository -y ppa:nathan-renniewaldock/qdirstat
 
 # Update apt and install dependencies.
-apt-get update && \
+RUN apt-get update
 
 # Install QDirStat
-apt-get install --force-yes qdirstat
+RUN apt-get install --force-yes qdirstat
 
 RUN \
 
