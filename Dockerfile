@@ -9,7 +9,7 @@ ENV APP_NAME="QDirStat" WIDTH=1280 HEIGHT=720 TERM=xterm
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ADD dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes
 
 RUN \
@@ -22,10 +22,10 @@ echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache
 RUN add-apt-repository -y ppa:nathan-renniewaldock/qdirstat
 
 # Update apt and install dependencies.
-RUN apt-get update
+RUN apt-get update -q
 
 # Install QDirStat
-RUN apt-get install --force-yes qdirstat
+RUN apt-get install --no-install-recommends -qy --force-yes qdirstat
 
 RUN \
 
