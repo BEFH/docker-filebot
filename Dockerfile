@@ -14,10 +14,6 @@ ADD dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes
 
 RUN \
 
-# Create dir to keep things tidy. Make sure it's readable by $USER_ID
-mkdir /files && \
-chmod a+rwX /files && \
-
 # Speed up APT
 echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
 echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache && \
@@ -29,7 +25,9 @@ add-apt-repository ppa:nathan-renniewaldock/qdirstat && \
 apt-get update && \
 
 # Install QDirStat
-apt-get install --force-yes qdirstat && \
+apt-get install --force-yes qdirstat
+
+RUN \
 
 # Revision-lock to a specific version to avoid any surprises.
 wget -q -O /runas.sh \
