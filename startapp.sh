@@ -9,4 +9,5 @@ function ts {
 export DISPLAY=:1
 
 echo "$(ts) Running QDirStat GUI"
-/runas.sh $USER_ID $GROUP_ID $UMASK qdirstat 
+cd /host || exit 127
+/runas.sh $USER_ID $GROUP_ID $UMASK qdirstat
